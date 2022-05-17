@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { firebaseReducer } from "react-redux-firebase";
 import usersReducer from "./users";
-import { rrfConfig } from "../firebase";
+import firebase, { rrfConfig } from "../firebase";
 import { createFirestoreInstance } from "redux-firestore";
 
 const store = configureStore({
@@ -12,9 +12,11 @@ const store = configureStore({
 });
 
 const rrfProps = {
+    firebase,
     config: rrfConfig,
     dispatch: store.dispatch,
     createFirestoreInstance
 }
 
 export default store;
+export { rrfProps };

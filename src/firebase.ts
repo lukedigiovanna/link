@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import firebase, { initializeApp } from "firebase/app";
 import { ReactReduxFirebaseConfig } from 'react-redux-firebase';
 import { getAuth, Auth, signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -23,4 +23,5 @@ const rrfConfig: Partial<ReactReduxFirebaseConfig> = {
     attachAuthIsReady: true
 };
 
+export default firebase;
 export { rrfConfig, auth, signInWithEmailAndPassword };

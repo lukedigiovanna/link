@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
 
+import App from './pages/app';
 import api from './api';
 import endpoints from './api/endpoints';
+import store, { rrfProps } from './store';
 
 import { auth, signInWithEmailAndPassword } from './firebase';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { Provider } from 'react-redux';
 
 async function main() {
   try {
@@ -38,18 +43,20 @@ async function main() {
   }
 }
 
-main();
+// main();
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <p>
-      Hi.
-    </p>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <Router>
+        <App />
+      </Router>
+    </ReactReduxFirebaseProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
