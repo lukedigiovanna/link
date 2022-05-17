@@ -4,4 +4,5 @@ export interface User {
     firstName: string;
     lastName: string;
     createdAt: Date;
+    avatarURL: string;
 }

@@ -12,3 +12,5 @@ function PostList(props: Post[]) {
         </>
     )
 }
+
+export { PostList };

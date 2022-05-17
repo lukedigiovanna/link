@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { UserList } from '../components/UserList';
 
 export default function MainPage() {
     return (
         <div>
-            <h1>Main Page</h1>
+            <UserList />
         </div>
     );
 }

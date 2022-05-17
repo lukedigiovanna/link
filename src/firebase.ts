@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-import firebase, { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app';
 import { ReactReduxFirebaseConfig } from 'react-redux-firebase';
 import { getAuth, Auth, signInWithEmailAndPassword } from 'firebase/auth';
 
