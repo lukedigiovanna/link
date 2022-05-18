@@ -1,0 +1,54 @@
+
+.user-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media screen and (max-width: 700px) {
+        height: 27px;
+    }
+
+    height: 42px;
+
+    .user-name {
+        font-size: 0.9rem;
+        margin: 0px; // allow full flex experience
+    }
+
+    .profile-image {
+        @media screen and (max-width: 700px) {
+            display: none;
+        }
+
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 5px;
+        border: 2px solid rgb(11, 0, 49);
+    }
+}
+
+.user-list {
+    @media screen and (max-width: 550px) {
+        display: none;
+    }
+
+    height: 100vh;
+    padding-left: 20px;
+
+    background-color: rgb(192, 198, 204);
+    border-right: 3px solid rgb(98, 98, 98);
+
+    max-width: 250px;
+    overflow: hidden;
+}
+
+.user-link {
+    text-decoration: none;
+    color: rgb(11, 0, 49);
+    transition: color 1s;
+}
+
+.user-link:hover {
+    color:rgb(44, 0, 122)
+}

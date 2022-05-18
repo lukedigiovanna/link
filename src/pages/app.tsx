@@ -6,6 +6,10 @@ import RegisterPage from './RegisterPage';
 import UserPage from './UserPage';
 import Paths from '../paths';
 
+// add bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/all.scss';
+
 export default function App() {
     return (
         <Routes>

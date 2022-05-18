@@ -1,0 +1,31 @@
+.post-block {
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+    .post-profile {
+        flex: 1;
+    }
+    
+    .post-content {
+        margin-bottom: 10px;
+        flex: 4;
+        
+        footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.posts-list {
+    scroll-behavior: smooth;
+}

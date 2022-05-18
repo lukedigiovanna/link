@@ -13,11 +13,11 @@ const slice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        addUsers: (state, action: PayloadAction<User[]>) => {
+        setUsers: (state, action: PayloadAction<User[]>) => {
             state.users = [...state.users, ...action.payload];
         }
     }
 });
 
-export const { addUsers } = slice.actions;
+export const { setUsers } = slice.actions;
 export default slice.reducer;

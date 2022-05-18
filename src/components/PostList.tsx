@@ -1,10 +1,10 @@
 import { Post } from '../types/post.type';
 import { PostBlock } from './PostBlock';
 
-function PostList(props: Post[]) {
+function PostList(props: { posts: Post[] }) {
     return (
         <>
-            {props.map((post: Post) => {
+            {props.posts.map((post: Post) => {
                 return (
                     <PostBlock key={post.id} post={post} />
                 )

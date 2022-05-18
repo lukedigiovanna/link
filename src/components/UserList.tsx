@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 import api from '../api';
 import endpoints from '../api/endpoints';
-import { addUsers } from '../store/users';
+import { setUsers } from '../store/users';
 
 function UserList() {
     const users = useSelector((state: any) => state.users);
@@ -14,12 +14,15 @@ function UserList() {
     useEffect(() => {
         // fetch the users from the api
         api.get(endpoints.users()).then((response) => {
-            dispatch(addUsers(response.data));
+            dispatch(setUsers(response.data));
         });
     }, [])
 
     return (
         <>
+            <h1>
+                all users
+            </h1>
             {users.users.map((user: User) => {
                 return (
                     <UserField key={user.name} user={user} />

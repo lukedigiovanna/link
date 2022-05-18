@@ -1,14 +1,18 @@
 import { User } from '../types/user.type';
 
+import { ProfileImage } from './ProfileImage';
+
 function UserField(props: { user: User}) {
     return (
-        <>
-            <h1>
-                {props.user.firstName} {props.user.lastName} - @{props.user.name}
-            </h1>
-            <img src={props.user.avatarURL}>
-            </img>
-        </>
+        <div className="user-field">
+            <ProfileImage imageSrc={props.user.avatarURL} />
+
+            <p className='user-name'>
+                <a className='user-link' href={`/users/${props.user.name}`}>
+                    @{props.user.name}
+                </a>
+            </p>
+        </div>
     )
 }
 
