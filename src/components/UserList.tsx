@@ -19,16 +19,38 @@ function UserList() {
     }, [])
 
     return (
-        <>
+        <div className="user-list">
             <h1>
-                all users
+                <a href="../../">
+                    Link
+                </a>
             </h1>
             {users.users.map((user: User) => {
                 return (
                     <UserField key={user.name} user={user} />
                 )
             })}
-        </>
+            {users.users.map((user: User) => {
+                return (
+                    <UserField key={user.name} user={user} />
+                )
+            })}
+            {users.users.map((user: User) => {
+                return (
+                    <UserField key={user.name} user={user} />
+                )
+            })}
+            {users.users.map((user: User) => {
+                return (
+                    <UserField key={user.name} user={user} />
+                )
+            })}
+            {users.users.map((user: User) => {
+                return (
+                    <UserField key={user.name} user={user} />
+                )
+            })}
+        </div>
     )
 }
 

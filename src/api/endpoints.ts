@@ -1,7 +1,7 @@
 
 class Endpoints {
     users = () => '/users';
-    user = (name: string) => `/users/${name}`;
+    user = (id: string) => `/users/${id}`;
     posts = (replyTo?: number, all?: boolean) => `/posts?${replyTo ? `replyTo=${replyTo}&` : ""}${all ? `all=true` : ""}`;
     postsByUser = (name: string) => `/posts/${name}`;
     post = (id: number) => `/posts/${id}`;

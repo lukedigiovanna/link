@@ -1,5 +1,5 @@
 .post-block {
-    background-color: white;
+    background-color: $post-color;
     margin: 10px;
     border-radius: 5px;
     padding: 10px;
@@ -10,9 +10,10 @@
         flex: 1;
     }
     
-    .post-content {
+    .post-body {
         margin-bottom: 10px;
         flex: 4;
+        color: $primary-text-color;
         
         footer {
             display: flex;
@@ -27,5 +28,10 @@
 }
 
 .posts-list {
-    scroll-behavior: smooth;
+    @media screen and (max-width: 550px) {
+        margin-left: 0;
+    }
+
+    max-width: 800px;
+    margin-left: min(25vw, 250px);
 }
