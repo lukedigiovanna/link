@@ -1,0 +1,34 @@
+.profile-block {
+    display: flex;
+    flex-direction: row;
+    background-color: $secondary-color;
+    margin: 10px;
+    border-radius: 6px;
+    padding: 10px;
+
+    .profile-image {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+
+    .details {
+        * {
+            margin-left: 10px;
+        }
+        h1 {
+            font-size: 2.1rem;
+            color: $primary-text-color;
+        }
+        h2 {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: $secondary-text-color;
+        }
+        h3 {
+            font-style: italic;
+            color: $secondary-text-color;
+            font-size: 1.0rem;
+        }
+    }
+}

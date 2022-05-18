@@ -7,13 +7,13 @@ function PostList() {
     const posts = useSelector((state: any) => state.posts);
 
     return (
-        <div className="post-list">
-            {posts.posts.map((post: Post) => {
+        <>
+            {posts.posts.length > 0 ? posts.posts.map((post: Post) => {
                 return (
                     <PostBlock key={post.id} post={post} />
                 )
-            })}
-        </div>
+            }) : <p className='no-posts'>No posts yet</p>}
+        </>
     )
 }
 

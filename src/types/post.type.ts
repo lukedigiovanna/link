@@ -11,6 +11,7 @@ export interface Post {
     reactionCounts: ReactionCounts;
     createdAt: Date;
     isReply: boolean;
+    replyCount: number;
 }
 
 // export interface Post {

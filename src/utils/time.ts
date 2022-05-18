@@ -24,4 +24,17 @@ function calculateElapsedTime(date: Date) {
     return `${weeks}w`;
 }
 
-export { calculateElapsedTime };
+const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+
+function prettyPrintDate(dateString: Date | null) {
+    if (dateString === null) {
+        return "";
+    }
+
+    const date: Date = new Date(dateString);
+
+    return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+}
+
+
+export { calculateElapsedTime, prettyPrintDate };

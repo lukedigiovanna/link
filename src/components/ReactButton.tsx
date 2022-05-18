@@ -12,9 +12,13 @@ const reactionEmojis: Emojis = {
     "angry": "😠"
 }
 
-function ReactButton(props: { reaction: string, count: number }) {
+function ReactButton(props: { reaction: string, count: number, postId: number }) {
     return (
-        <button className="reaction-button">
+        <button 
+            className="reaction-button"
+            onClick={() => {
+                props.count++;
+            }}>
             <span className="reaction-text">
                 {reactionEmojis[props.reaction]}
             </span>

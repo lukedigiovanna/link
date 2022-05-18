@@ -6,10 +6,16 @@ import { useDispatch } from "react-redux";
 import { setPosts } from "../store/posts";
 import { PostList } from "../components/PostList";
 import { UserList } from "../components/UserList";
+import { ProfileBlock } from "../components/ProfileBlock";
+import { useSelector } from "react-redux";
+import { User, UserNotFound, UserLoading } from "../types/user.type";
 
 export default function UserPage() {
     const { username } = useParams(); 
     const dispatch = useDispatch();
+    const users = useSelector((state: any) => state.users);
+
+    const [user, setUser] = useState<User>(UserLoading());
 
     // get all posts
     useEffect(() => {
@@ -17,14 +23,24 @@ export default function UserPage() {
         api.get(endpoints.postsByUser(username ? username : "")).then((response) => {
             dispatch(setPosts(response.data));
         });
-    }, []);
+
+        // find which user is the username
+        let found = false;
+        users.users.forEach((user: User) => {
+            if (user.name === username) {
+                setUser(user);
+                found = true;
+            }
+        }, []);
+    });
+
+
 
     return (
         <>
-            <div className="user-list">
-                <UserList />    
-            </div>  
-            <div className="posts-list">
+            <UserList />   
+            <div className='posts-list'>
+                <ProfileBlock user={user} /> 
                 <PostList />
             </div>
         </>

@@ -30,13 +30,14 @@ async function main() {
     //   isReply: false
     // })
 
-    await api.post(endpoints.reactionsToPost(16), {
-      reaction: "like"
-    })
+    // await api.post(endpoints.reactionsToPost(16), {
+    //   reaction: "angry"
+    // })
 
-    console.log(api.get(endpoints.postsByUser('lukedigiovanna')));
-    console.log(api.get(endpoints.users()))
-    console.log(api.get(endpoints.reactionsCount(9)));
+    await api.post(endpoints.posts(), {
+      body: "BING CHILLING 🍨",
+      isReply: false
+    });
   }
   catch (error) {
     console.log(error);

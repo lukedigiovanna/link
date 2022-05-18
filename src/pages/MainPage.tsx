@@ -23,7 +23,9 @@ export default function MainPage() {
     return (
         <>
             <UserList /> 
-            <PostList />
+            <div className="posts-list">
+                <PostList />
+            </div>
         </>
     );
 }

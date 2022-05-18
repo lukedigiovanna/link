@@ -30,26 +30,6 @@ function UserList() {
                     <UserField key={user.name} user={user} />
                 )
             })}
-            {users.users.map((user: User) => {
-                return (
-                    <UserField key={user.name} user={user} />
-                )
-            })}
-            {users.users.map((user: User) => {
-                return (
-                    <UserField key={user.name} user={user} />
-                )
-            })}
-            {users.users.map((user: User) => {
-                return (
-                    <UserField key={user.name} user={user} />
-                )
-            })}
-            {users.users.map((user: User) => {
-                return (
-                    <UserField key={user.name} user={user} />
-                )
-            })}
         </div>
     )
 }
