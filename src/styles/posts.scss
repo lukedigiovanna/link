@@ -62,9 +62,14 @@
 
     max-width: 800px;
     margin-left: min(25vw, 250px);
+    margin-top: 60px;
 
     .no-posts {
         color: $secondary-text-color;
         margin-left: 20px;
     }
+}
+
+.replies-list {
+    margin-left: 70px;
 }

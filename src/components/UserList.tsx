@@ -21,7 +21,7 @@ function UserList() {
     return (
         <div className="user-list">
             <h1>
-                <a href="../../">
+                <a href={process.env.REACT_APP_PUBLIC_URL}>
                     Link
                 </a>
             </h1>

@@ -2,10 +2,13 @@ import { Post } from '../types/post.type';
 import { calculateElapsedTime } from '../utils/time';
 import { ProfileImage } from './ProfileImage';
 import { ReactionBar } from './ReactionBar';
+import { useNavigate } from 'react-router-dom';
 
 function PostBlock(props: { post: Post }) {
+    const navigate = useNavigate();
+
     return (
-        <div className="post-block">
+        <div className="post-block" onClick={() => {navigate(`/post/${props.post.id}`)}}>
             <div className="post-profile">
                 <ProfileImage imageSrc={props.post.author.avatarURL} />
                 <p>

@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
+import { auth } from '../firebase';
 
 function LoginBox() {
-    const firebase = useSelector((state: any) => state.firebase);
     // firebase.
+    // check if the user is logged in.
+    console.log('auth',auth.currentUser);
+
     return (
-        <button>
-            <div className="login-box">
-                <h1>Login</h1>
-            </div>
+        <button className="login-box">
+            Login
         </button>
     );
 }
