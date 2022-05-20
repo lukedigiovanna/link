@@ -30,5 +30,15 @@
 
 .form-input {
     margin-bottom: 10px;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.error-message {
+    color: $error-color;
+    margin: 0;
+    text-align: center;
 }
 

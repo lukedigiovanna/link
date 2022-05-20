@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import api from '../api';
 import endpoints from '../api/endpoints';
 import {auth, signInWithEmailAndPassword} from '../firebase';
+import {InputField} from './InputField';
 
 function LoginBox(props: {show: boolean, onClose: () => void}) {
     const [email, setEmail] = useState("");
@@ -14,14 +15,19 @@ function LoginBox(props: {show: boolean, onClose: () => void}) {
         if (email.length === 0 || password.length === 0) {
             setErrorMessage("Please enter an email and password.")
         } else {
-            try {
-                signInWithEmailAndPassword(auth, email, password).then(() => {
-                    props.onClose();
-                });
-            }
-            catch (error) {
-                setErrorMessage(String(error));
-            }
+            signInWithEmailAndPassword(auth, email, password).then(() => {
+                props.onClose();
+            }).catch(error => {
+                if (error.message.includes("password")) {
+                    setErrorMessage("Login Failure: Incorrect password")
+                }
+                else if (error.message.includes("user")) {
+                    setErrorMessage("Login Failure: User not found")
+                }
+                else if (error.message.includes("email")) {
+                    setErrorMessage("Login Failure: Email poorly formatted")
+                }
+            });
         }
     }
 
@@ -33,18 +39,17 @@ function LoginBox(props: {show: boolean, onClose: () => void}) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='form-input'>
-                        <input 
-                            className="login-input"
+                        <p>Email</p>
+                        <InputField 
                             placeholder="example@email.com"
-                            onChange={(e) => {setEmail(e.currentTarget.value)}}
-                        />
+                            onChange={(e) => {setEmail(e)}} />
                     </div>
                     <div className='form-input'>
-                        <input 
+                        <p>Password</p>
+                        <InputField 
                             type="password"
-                            className="login-input"
                             placeholder="password"
-                            onChange={(e) => {setPassword(e.currentTarget.value)}}
+                            onChange={(e) => {setPassword(e)}}
                         />
                     </div>
                     <p className="error-message">

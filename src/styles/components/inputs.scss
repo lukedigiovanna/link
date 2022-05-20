@@ -1,0 +1,47 @@
+.input-field {
+    width: 80%;
+    margin-left: 10px;
+
+    input {
+        width: 100%;
+        background-color: white;
+        height: 30px;
+        outline: none;
+        border: none;
+        padding: 5px;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        // border-bottom: 3px solid #ccc;
+        z-index: -1;
+        border-radius: 3px;
+
+        &:focus {
+            + div {
+                .highlighted {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    div {
+        * {
+            transition: 0.5s;
+            border-radius: 3px;
+            margin-inline: auto;
+            height: 3px;
+        }
+
+        .regular {
+            background-color: #ccc;
+            width: 100%;
+        }
+
+        .highlighted {
+            background-color: $primary-color;
+            width: 0%;
+            margin-top: -3px;
+        }
+
+    }
+}

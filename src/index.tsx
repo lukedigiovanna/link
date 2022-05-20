@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 
 async function main() {
   try {
-    // signOut(auth);
+    signOut(auth);
     // await signInWithEmailAndPassword(auth, "admin2@gmail.com", "admin123");
     // console.log("Signed in");
   }
@@ -23,7 +23,7 @@ async function main() {
   }
 }
 
-// main();
+main();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

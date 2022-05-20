@@ -10,7 +10,10 @@ function PostList(props: { searchTerm?: string}) {
         <>
             {posts.posts.length > 0 ? fuzzySearch(props.searchTerm, {keys: ["body", "author.name", "author.firstName", "author.lastName"]}, posts.posts).map((post: Post) => {
                 return (
-                    <PostBlock key={post.id} post={post} />
+                    <>
+                        <PostBlock key={post.id} post={post} /> 
+                        <hr></hr>
+                    </>
                 )
             }) : <p className='no-posts'>No posts yet</p>}
         </>
