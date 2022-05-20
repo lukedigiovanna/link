@@ -1,7 +1,7 @@
 import { userInfo } from "os";
-import { User } from "../types/user.type";
-import { prettyPrintDate } from "../utils/time";
-import { ProfileImage } from "./ProfileImage";
+import { User } from "../../types/user.type";
+import { prettyPrintDate } from "../../utils/time";
+import { ProfileImage } from "../ProfileImage";
 
 function ProfileBlock(props: { user: User}) {
     return (

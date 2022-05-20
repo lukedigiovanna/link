@@ -8,7 +8,7 @@ function UserField(props: { user: User}) {
             <ProfileImage imageSrc={props.user.avatarURL} />
 
             <p className='user-name'>
-                <a className='user-link' href={`/user/${props.user.name}`}>
+                <a className='user-link' href={`${process.env.REACT_APP_PUBLIC_URL}/user/${props.user.name}`}>
                     @{props.user.name}
                 </a>
             </p>

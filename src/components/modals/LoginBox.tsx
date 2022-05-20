@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import api from '../api';
-import endpoints from '../api/endpoints';
-import {auth, signInWithEmailAndPassword} from '../firebase';
-import {InputField} from './InputField';
+import api from '../../api';
+import endpoints from '../../api/endpoints';
+import {auth, signInWithEmailAndPassword} from '../../firebase';
+import {InputField} from '../inputs/InputField';
 
 function LoginBox(props: {show: boolean, onClose: () => void}) {
     const [email, setEmail] = useState("");

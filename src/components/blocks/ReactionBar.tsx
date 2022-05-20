@@ -1,5 +1,5 @@
-import { ReactionCounts } from "../types/reactions.type";
-import { ReactButton } from './ReactButton';
+import { ReactionCounts } from "../../types/reactions.type";
+import { ReactButton } from '../inputs/ReactButton';
 
 function ReactionBar(props: { reactionCounts: ReactionCounts, postId: number }) {
     return (

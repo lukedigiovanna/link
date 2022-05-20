@@ -4,9 +4,9 @@ import endpoints from '../api/endpoints';
 import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setPosts } from "../store/posts";
-import { PostList } from "../components/PostList";
-import { UserList } from "../components/UserList";
-import { ProfileBlock } from "../components/ProfileBlock";
+import { PostList } from "../components/lists/PostList";
+import { UserList } from "../components/lists/UserList";
+import { ProfileBlock } from "../components/blocks/ProfileBlock";
 import { useSelector } from "react-redux";
 import { User, UserNotFound, UserLoading } from "../types/user.type";
 

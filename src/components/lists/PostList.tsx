@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { Post } from '../types/post.type';
-import { PostBlock } from './PostBlock';
-import { fuzzySearch } from '../utils/search';
+import { Post } from '../../types/post.type';
+import { PostBlock } from '../blocks/PostBlock';
+import { fuzzySearch } from '../../utils/search';
 
 function PostList(props: { searchTerm?: string}) {
     const posts = useSelector((state: any) => state.posts);

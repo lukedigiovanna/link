@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { UserList } from '../components/UserList';
-import { PostList } from '../components/PostList';
+import { UserList } from '../components/lists/UserList';
+import { PostList } from '../components/lists/PostList';
 import api from '../api';
 import endpoints from '../api/endpoints';
 import { useSelector, useDispatch } from 'react-redux';

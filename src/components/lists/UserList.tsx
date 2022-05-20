@@ -1,10 +1,10 @@
-import { User } from "../types/user.type";
-import { UserField } from './UserField';
+import { User } from "../../types/user.type";
+import { UserField } from '../UserField';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
-import api from '../api';
-import endpoints from '../api/endpoints';
-import { setUsers } from '../store/users';
+import api from '../../api';
+import endpoints from '../../api/endpoints';
+import { setUsers } from '../../store/users';
 
 function UserList() {
     const users = useSelector((state: any) => state.users);

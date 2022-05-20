@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import api from '../api';
-import endpoints from '../api/endpoints';
-import {auth} from '../firebase';
+import api from '../../api';
+import endpoints from '../../api/endpoints';
+import {auth} from '../../firebase';
 
 function MakePost(props: {show: boolean, onClose: () => void}) {
     const [body, setBody] = useState("");

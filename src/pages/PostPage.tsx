@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { ReplyPostList } from "../components/ReplyPostList";
-import { UserList } from '../components/UserList';
+import { ReplyPostList } from "../components/lists/ReplyPostList";
+import { UserList } from '../components/lists/UserList';
 import api from '../api';
 import endpoints from "../api/endpoints";
 import { useEffect } from "react";

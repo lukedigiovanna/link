@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { Post } from '../types/post.type';
-import { PostBlock } from './PostBlock';
+import { Post } from '../../types/post.type';
+import { PostBlock } from '../blocks/PostBlock';
 
 function ReplyPostList() {
     const posts = useSelector((state: any) => state.posts);

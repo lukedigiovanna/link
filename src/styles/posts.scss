@@ -16,10 +16,15 @@
         max-width: 100px;
         margin-right: 10px;
 
-        p {
+        a {
             margin: 0;
             font-size: 0.8rem;
             color: $secondary-text-color;
+            transition: 0.4s;
+            text-decoration: none;
+            &:hover {
+                color: $primary-text-color;
+            }
         }
 
         .profile-image {

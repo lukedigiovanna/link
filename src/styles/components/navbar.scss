@@ -11,6 +11,11 @@
 
     padding-inline: 10px;
 
+    @media screen and (max-width: 550px) {
+        left: 0;
+        width: 100vw;
+    }
+
     
     .signed-in {
         display: flex;
