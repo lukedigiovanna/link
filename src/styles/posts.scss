@@ -5,6 +5,9 @@
     padding: 10px;
     display: flex;
     flex-direction: row;
+    transition: background-color 0.3s;
+    max-width: 800px;
+    cursor: pointer;
 
     .post-profile {
         display: flex;
@@ -48,11 +51,11 @@
         }
     }
 
-    transition: background-color 0.3s;
 
     &:hover {
         background-color: lighten($post-color, 10%);
     }
+    
 }
 
 .posts-list {
@@ -60,7 +63,6 @@
         margin-left: 0;
     }
 
-    max-width: 800px;
     margin-left: min(25vw, 250px);
     margin-top: 60px;
 

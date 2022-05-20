@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPosts } from '../store/posts';
 import { User } from '../types/user.type';
 
-export default function MainPage() {
+export default function MainPage(props: {searchTerm?: string}) {
     const posts = useSelector((state: any) => state.posts?.posts);
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ export default function MainPage() {
         <>
             <UserList /> 
             <div className="posts-list">
-                <PostList />
+                <PostList searchTerm={props.searchTerm}/>
             </div>
         </>
     );

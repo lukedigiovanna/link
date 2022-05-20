@@ -7,13 +7,13 @@ function ReplyPostList() {
 
     return (
         <>
-            <PostBlock post={posts.posts[0]} />
+            { posts.posts.length > 0 ? <PostBlock post={posts.posts[0]} /> : "" }
             <div className='replies-list'>
                 {posts.posts.length > 0 ? posts.posts.slice(1).map((post: Post) => {
                     return (
                         <PostBlock key={post.id} post={post} />
                     )
-                }) : <p className='no-posts'>No posts yet</p>}
+                }) : <p className='no-posts'>No replies here</p>}
             </div>
         </>
     )

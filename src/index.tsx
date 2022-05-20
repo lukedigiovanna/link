@@ -8,36 +8,15 @@ import api from './api';
 import endpoints from './api/endpoints';
 import store, { rrfProps } from './store';
 
-import { auth, signInWithEmailAndPassword } from './firebase';
+import { auth, signInWithEmailAndPassword, signOut } from './firebase';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { Provider } from 'react-redux';
 
 async function main() {
   try {
-    // await api.post(endpoints.users(), {
-    //   name: 'bingqilin',
-    //   email: 'admin2@gmail.com',
-    //   password: 'admin123',
-    //   firstName: "Bing",
-    //   lastName: "Qilin",
-    //   avatarURL: "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Vanilla-Reduced-Fat-Ice-Cream-Cone:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
-    // });
-
-    await signInWithEmailAndPassword(auth, "admin2@gmail.com", "admin123");
-    
-    // await api.post(endpoints.posts(), {
-    //   body: "I love ice cream so much. Also Wazzup beijing",
-    //   isReply: false
-    // })
-
-    // await api.post(endpoints.reactionsToPost(16), {
-    //   reaction: "angry"
-    // })
-
-    await api.post(endpoints.posts(), {
-      body: "BING CHILLING 🍨",
-      isReply: false
-    });
+    // signOut(auth);
+    // await signInWithEmailAndPassword(auth, "admin2@gmail.com", "admin123");
+    // console.log("Signed in");
   }
   catch (error) {
     console.log(error);
@@ -45,9 +24,6 @@ async function main() {
 }
 
 // main();
-
-console.log(process.env.PUBLIC_URL);
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

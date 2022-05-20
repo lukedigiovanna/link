@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
 import { ReactReduxFirebaseConfig } from 'react-redux-firebase';
-import { getAuth, Auth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, Auth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDfVGO7x81mXo-jjvstYYyfHpcprd8Q40E",
@@ -25,4 +25,4 @@ const rrfConfig: Partial<ReactReduxFirebaseConfig> = {
 };
 
 export default firebase;
-export { rrfConfig, auth, signInWithEmailAndPassword };
+export { rrfConfig, auth, signInWithEmailAndPassword, onAuthStateChanged, signOut };
