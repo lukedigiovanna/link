@@ -6,7 +6,7 @@ import Paths from '../paths';
 
 // add bootstrap
 // import 'bootstrap/dist/css/bootstrap.min.css'
-// import '../styles/all.scss';
+import '../styles/all.scss';
 import { NavBar } from "../components/NavBar";
 import { PostPage } from "./PostPage";
 import { auth, onAuthStateChanged } from "../firebase";

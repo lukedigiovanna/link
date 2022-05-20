@@ -36,4 +36,3 @@ root.render(
     </ReactReduxFirebaseProvider>
   </Provider>
 );
-
