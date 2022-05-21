@@ -1,3 +1,5 @@
+import { Reaction } from "./reactions.type";
+
 export interface User {
     email: string;
     name: string;
@@ -5,6 +7,7 @@ export interface User {
     lastName: string;
     createdAt: Date | null;
     avatarURL: string;
+    reactions: Reaction[]
 }
 
 export const UserNotFound = (attemptedUsername: string) => {
@@ -14,7 +17,8 @@ export const UserNotFound = (attemptedUsername: string) => {
         firstName: "",
         lastName: "",
         createdAt: null,
-        avatarURL: ""
+        avatarURL: "",
+        reactions: []
     }
 }
 
@@ -25,6 +29,7 @@ export const UserLoading = () => {
         firstName: "Loading...",
         lastName: "",
         createdAt: null,
-        avatarURL: ""
+        avatarURL: "",
+        reactions: []
     }
 }

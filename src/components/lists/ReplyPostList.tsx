@@ -19,6 +19,7 @@ function ReplyPostList() {
     return (
         <ReplyPostListContainer>
             { posts.posts.length > 0 ? <PostBlock post={posts.posts[0]} /> : "" }
+            
             <ReplyListContainer>
                 {posts.posts.length > 0 ? posts.posts.slice(1).map((post: Post) => {
                     return (

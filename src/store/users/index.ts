@@ -32,8 +32,8 @@ const slice = createSlice({
         setUsers: (state, action: PayloadAction<User[]>) => {
             state.users = [...action.payload];
         },
-        setCurrentUser: (state, action: PayloadAction<User>) => {
-            state.currentUser = {...action.payload}
+        setCurrentUser: (state, action: PayloadAction<User | null>) => {
+            state.currentUser = action.payload ? {...action.payload} : null;
         }
     },
     extraReducers: (builder) => {

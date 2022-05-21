@@ -32,6 +32,8 @@ export default function UserPage() {
                 setUser(user);
             }
         }, []);
+
+        console.log("foo");
     });
 
 

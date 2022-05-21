@@ -28,6 +28,9 @@ export default function App() {
                     dispatch(setCurrentUser(response.data));
                 });
             }
+            else {
+                dispatch(setCurrentUser(null));
+            }
         });
     })
 

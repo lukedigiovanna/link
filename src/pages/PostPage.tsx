@@ -17,7 +17,6 @@ function PostPage() {
     // then all others are direct replies to that post.
     useEffect(() => {
         // clear posts before loading in the replies
-        dispatch(setPosts([]));
         api.get(endpoints.posts(Number(id))).then((response) => {
             dispatch(setPosts(response.data.reverse()));
         });

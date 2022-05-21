@@ -7,6 +7,7 @@ import { ProfileImage } from "./ProfileImage";
 import styled from 'styled-components'
 import theme from '../constants/theme';
 import { SignupBox } from "./modals/SignupBox";
+import {auth, signOut} from '../constants/firebase';
 
 const NavBarContainer = styled.nav`
     background-color: ${theme.colors.backgroundColorLight20};
@@ -18,6 +19,7 @@ const NavBarContainer = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 
     padding-inline: 10px;
 
@@ -39,6 +41,18 @@ const SignedInDetails = styled.div`
 const NavbarText = styled.p`
     color: ${theme.colors.primaryTextColor};
     margin: 0;
+    font-family: ${theme.fonts.primary};
+`
+
+const NavbarLink = styled.a`
+    color: ${theme.colors.secondaryTextColor};
+    margin: 0;
+    text-decoration: none;
+    font-family: ${theme.fonts.primary};
+    transition: color 0.5s;
+    &:hover {
+        color: ${theme.colors.primaryTextColor};
+    }
 `
 
 const NavbarButton = styled.button<{ primary?: boolean}>`
@@ -71,14 +85,19 @@ function NavBar(props: {onSearch: (searchTerm: string) => void}) {
                 user !== null ? 
                     (<SignedInDetails>
                         <ProfileImage imageSrc={user?.avatarURL} size={35}/>
-                        <NavbarText>
+                        <NavbarLink href={`${process.env.REACT_APP_PUBLIC_URL}/user/${user?.name}`}>
                             @{user?.name}
-                        </NavbarText>
+                        </NavbarLink>
                         <NavbarButton 
                             onClick={() => {setShowMakePost(true)}}
-                            primary
                         >
                             + Post
+                        </NavbarButton>
+                        <NavbarButton
+                            onClick={() => {signOut(auth)}}
+                            primary
+                        >
+                            Logout
                         </NavbarButton>
                     </SignedInDetails>) :
                     (<div> 
