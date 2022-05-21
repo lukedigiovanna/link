@@ -29,7 +29,8 @@ function PostList(props: { searchTerm?: string}) {
                         <HorizontalBar/>
                     </>
                 )
-            }) : <p className='no-posts'>No posts yet</p>}
+            }) : 
+            <p className='no-posts'>No posts yet</p>}
         </PostListContainer>
     )
 }

@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { ProfileImage } from "./ProfileImage";
 import styled from 'styled-components'
 import theme from '../constants/theme';
-import { ThemeProviderProps } from "react-bootstrap";
 import { SignupBox } from "./modals/SignupBox";
 
 const NavBarContainer = styled.nav`

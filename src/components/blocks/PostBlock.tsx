@@ -7,10 +7,9 @@ import styled from 'styled-components'
 import theme from '../../constants/theme'
 
 const PostBlockContainer = styled.div`
-    /* margin: 10px;
-    border-radius: 5px; */
     background-color: ${theme.colors.postColor};
-    padding: 15px;
+    padding-block: 15px;
+    padding-right: 15px;
     display: flex;
     flex-direction: row;
     transition: background-color 0.3s;
@@ -33,7 +32,7 @@ const PostProfileContainer = styled.div`
 
 const PostProfileUserLink = styled.a`
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: ${theme.colors.secondaryTextColor};
     transition: 0.4s;
     text-decoration: none;
@@ -50,14 +49,6 @@ const PostBodyContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        color: $secondary-text-color;
-        font-size: 0.8rem;
-    }
 `
 
 const PostBodyText = styled.p`
@@ -74,6 +65,10 @@ const PostBodyFooter = styled.div`
     color: ${theme.colors.secondaryTextColor};
     font-size: 0.8rem;
     font-family: ${theme.fonts.primary};
+
+    p {
+        margin: 0;
+    }
 `
 
 function PostBlock(props: { post: Post }) {

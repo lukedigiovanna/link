@@ -15,9 +15,12 @@ const slice = createSlice({
     reducers: {
         setPosts: (state, action: PayloadAction<Post[]>) => {
             state.posts = [...action.payload];
+        },
+        prependPost: (state, action: PayloadAction<Post>) => {
+            state.posts = [action.payload, ...state.posts];
         }
     }
 });
 
-export const { setPosts } = slice.actions;
+export const { setPosts, prependPost } = slice.actions;
 export default slice.reducer;

@@ -20,6 +20,7 @@ function ReactionBar(props: { reactionCounts: ReactionCounts, postId: number }) 
                     } else { return ""}
                 })
             }
+            <ReactButton reaction={'new'} count={0} key={-1} postId={props.postId} />
         </ReactionBarContainer>
     )
 }

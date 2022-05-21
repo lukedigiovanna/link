@@ -1,5 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import theme from '../../constants/theme';
+import { ReactPopup } from './ReactPopup';
 
 interface Emojis {
     [key: string]: string
@@ -12,7 +14,8 @@ const reactionEmojis: Emojis = {
     "haha": "😂",
     "wow": "😮",
     "sad": "😢",
-    "angry": "😠"
+    "angry": "😠",
+    "new": "+"
 }
 
 const ReactionButton = styled.button`
@@ -36,16 +39,29 @@ const ReactionCount = styled.span`
 `
 
 function ReactButton(props: { reaction: string, count: number, postId: number }) {
+    const [showPopup, setShowPopup] = React.useState(false);
+
+
     return (
-        <ReactionButton 
-            className="reaction-button"
-            onClick={() => {
-                props.count++;
-            }}>
-            <ReactionCount>
-             {reactionEmojis[props.reaction]} {props.count}
-            </ReactionCount>
-        </ReactionButton>
+        <>
+            <ReactPopup shown={showPopup} />
+            <ReactionButton 
+                className="reaction-button"
+                onClick={(e) => {
+                    console.log("clicked");
+                    if (props.reaction === "new") {
+                        // open pop up to add new reaction
+                        setShowPopup(true);
+                    }
+                    // give this button precedence over the post it may be on
+                    e.stopPropagation();
+                }}>
+                <ReactionCount>
+                    {reactionEmojis[props.reaction]} 
+                    {props.reaction === "new" ? "" : props.count}
+                </ReactionCount>
+            </ReactionButton>
+        </>
     )
 }
 

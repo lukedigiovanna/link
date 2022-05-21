@@ -21,7 +21,6 @@ class APIService {
             ...this.defaultHeaders,
             Authorization: token ? `Bearer ${token}` : ''
         }
-        console.log(headers);
         return headers;
     }
 
@@ -32,12 +31,12 @@ class APIService {
 
     public async post(endpoint: string, data: any) {
         const headers = await this.getHeaders();
-        await this.instance.post(endpoint, data, { headers });
+        return await this.instance.post(endpoint, data, { headers });
     }
 
     public async delete(endpoint: string) {
         const headers = await this.getHeaders();
-        await this.instance.delete(endpoint, { headers });
+        return await this.instance.delete(endpoint, { headers });
     }
 }
 

@@ -4,9 +4,27 @@ import api from '../../api';
 import endpoints from '../../api/endpoints';
 import {auth} from '../../constants/firebase';
 import { SubmitButton, TextArea, ErrorMessage } from "./modals.elements";
+import { useDispatch } from 'react-redux';
+import { prependPost } from '../../store/posts';
 
 function MakePost(props: {show: boolean, onClose: () => void}) {
     const [body, setBody] = useState("");
+    const dispatch = useDispatch();
+
+    const submit = () => {
+        if (body.length > 0) {
+            api.post(endpoints.posts(), {
+                body: body,
+                userId: auth.currentUser?.uid,
+                isReply: false
+            }).then(response => {
+                console.log(response);
+                // dispatch the new post to the store
+                dispatch(prependPost(response.data));
+                props.onClose();
+            });
+        }
+    }
 
     return (
         <>
@@ -24,18 +42,7 @@ function MakePost(props: {show: boolean, onClose: () => void}) {
                 <Modal.Footer>
                     <SubmitButton 
                         onClick={() => {
-                            // do some checking on the body
-                            if (body.length > 0) {
-                                api.post(endpoints.posts(), {
-                                    body: body,
-                                    userId: auth.currentUser?.uid,
-                                    isReply: false
-                                }).then(response => {
-                                    console.log(response);
-                                    props.onClose();
-                                });
-                            }
-
+                            submit();
                         }}
                         disabled={body.length === 0}
                         >
