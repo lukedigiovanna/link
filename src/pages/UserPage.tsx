@@ -8,7 +8,9 @@ import { PostList } from "../components/lists/PostList";
 import { UserList } from "../components/lists/UserList";
 import { ProfileBlock } from "../components/blocks/ProfileBlock";
 import { useSelector } from "react-redux";
-import { User, UserNotFound, UserLoading } from "../types/user.type";
+import { User, UserLoading } from "../types/user.type";
+import { VerticalSpacer } from "../utils/styles";
+import theme from "../constants/theme";
 
 export default function UserPage() {
     const { username } = useParams(); 
@@ -25,11 +27,9 @@ export default function UserPage() {
         });
 
         // find which user is the username
-        let found = false;
         users.users.forEach((user: User) => {
             if (user.name === username) {
                 setUser(user);
-                found = true;
             }
         }, []);
     });
@@ -39,10 +39,9 @@ export default function UserPage() {
     return (
         <>
             <UserList />   
-            <div className='posts-list'>
-                <ProfileBlock user={user} /> 
-                <PostList />
-            </div>
+            <VerticalSpacer height={theme.spacing.navbarHeight} />
+            <ProfileBlock user={user} /> 
+            <PostList />
         </>
     )
 }

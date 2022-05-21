@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import api from '../../api';
 import endpoints from '../../api/endpoints';
-import {auth} from '../../firebase';
+import {auth} from '../../constants/firebase';
+import { SubmitButton, TextArea, ErrorMessage } from "./modals.elements";
 
 function MakePost(props: {show: boolean, onClose: () => void}) {
     const [body, setBody] = useState("");
@@ -14,16 +15,14 @@ function MakePost(props: {show: boolean, onClose: () => void}) {
                     <Modal.Title>Make a post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <textarea 
-                        className="make-post-textarea"
+                    <TextArea 
                         placeholder="Write your hearts desire"
                         value={body}
                         onChange={(e) => {setBody(e.target.value)}}
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
-                        className="make-post-button"
+                    <SubmitButton 
                         onClick={() => {
                             // do some checking on the body
                             if (body.length > 0) {
@@ -37,9 +36,11 @@ function MakePost(props: {show: boolean, onClose: () => void}) {
                                 });
                             }
 
-                        }}>
+                        }}
+                        disabled={body.length === 0}
+                        >
                         Post
-                    </button>
+                    </SubmitButton>
                 </Modal.Footer>
             </Modal>
         </>

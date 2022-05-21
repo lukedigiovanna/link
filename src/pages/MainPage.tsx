@@ -6,6 +6,8 @@ import endpoints from '../api/endpoints';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPosts } from '../store/posts';
 import { User } from '../types/user.type';
+import { HorizontalSpacer, VerticalSpacer } from '../utils/styles';
+import theme from '../constants/theme';
 
 export default function MainPage(props: {searchTerm?: string}) {
     const posts = useSelector((state: any) => state.posts?.posts);
@@ -22,9 +24,9 @@ export default function MainPage(props: {searchTerm?: string}) {
     return (
         <>
             <UserList /> 
-            <div className="posts-list">
-                <PostList searchTerm={props.searchTerm}/>
-            </div>
+            <VerticalSpacer height={theme.spacing.navbarHeight} />
+            <HorizontalSpacer width={"50px"} />
+            <PostList searchTerm={props.searchTerm}/>
         </>
     );
 }

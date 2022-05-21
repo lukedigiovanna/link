@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
 import UserPage from './UserPage';
-import Paths from '../paths';
+import Paths from '../constants/paths';
 
 // add bootstrap
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/all.scss';
 import { NavBar } from "../components/NavBar";
 import { PostPage } from "./PostPage";
-import { auth, onAuthStateChanged } from "../firebase";
+import { auth, onAuthStateChanged } from "../constants/firebase";
 import api from '../api';
 import endpoints from '../api/endpoints'
 import { useDispatch } from "react-redux";

@@ -7,7 +7,7 @@ import api from './api';
 import endpoints from './api/endpoints';
 import store, { rrfProps } from './store';
 
-import { auth, signInWithEmailAndPassword, signOut } from './firebase';
+import { auth, signInWithEmailAndPassword, signOut } from './constants/firebase';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { Provider } from 'react-redux';
 

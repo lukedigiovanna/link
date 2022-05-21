@@ -1,15 +1,25 @@
-@import './utils';
-// @import './components';
+// @import './utils';
+// // @import './components';
 
-// @import './users';
-// @import './posts';
+// // @import './users';
+// // @import './posts';
+
+// body {
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: $background-color;
+// }
+
+// // div {
+// //     border: 1px solid black;
+// // }
+
+// fetch the font paring Regular Work Sans
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 body {
     width: 100vw;
     height: 100vh;
-    background-color: $background-color;
+    background-color: black;
+    overflow-x: hidden;
 }
-
-// div {
-//     border: 1px solid black;
-// }

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import api from '../../api';
-import endpoints from '../../api/endpoints';
-import {auth, signInWithEmailAndPassword} from '../../firebase';
+import {auth, signInWithEmailAndPassword} from '../../constants/firebase';
 import {InputField} from '../inputs/InputField';
+import { ErrorMessage, FormInputContainer, SubmitButton } from './modals.elements';
+
 
 function LoginBox(props: {show: boolean, onClose: () => void}) {
     const [email, setEmail] = useState("");
@@ -38,32 +38,31 @@ function LoginBox(props: {show: boolean, onClose: () => void}) {
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='form-input'>
+                    <FormInputContainer>
                         <p>Email</p>
                         <InputField 
                             placeholder="example@email.com"
                             onChange={(e) => {setEmail(e)}} />
-                    </div>
-                    <div className='form-input'>
+                    </FormInputContainer>
+                    <FormInputContainer>
                         <p>Password</p>
                         <InputField 
                             type="password"
                             placeholder="password"
                             onChange={(e) => {setPassword(e)}}
                         />
-                    </div>
-                    <p className="error-message">
+                    </FormInputContainer>
+                    <ErrorMessage>
                         {errorMessage}
-                    </p>
+                    </ErrorMessage>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
-                        className="make-post-button"
+                    <SubmitButton 
                         onClick={() => {
                             submit();
                         }}>
                         Login
-                    </button>
+                    </SubmitButton>
                 </Modal.Footer>
             </Modal>
         </>

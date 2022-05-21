@@ -1,42 +1,38 @@
 import styled from 'styled-components';
+import theme from '../constants/theme';
 import { User } from '../types/user.type';
 
 import { ProfileImage } from './ProfileImage';
 
-const UserFieldComponent = styled.div`
+const UserFieldContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 42px;
+    margin-bottom: 3px;
 
     @media screen and (max-width: 700px) {
         height: 27px;
     }
+`
 
-    height: 42px;
-
-    .user-name {
-        font-size: 0.9rem;
-        margin: 0px; // allow full flex experience
-
-        .user-link {
-            text-decoration: none;
-            color: $primary-text-color;
-            transition: color 0.5s;
-        }
-    }
+const UsernameLink = styled.a`
+    font-size: 0.9rem;
+    margin: 0 0 0 6px; // allow full flex experience
+    text-decoration: none;
+    color: ${theme.colors.primaryTextColor};
+    font-family: ${theme.fonts.primary};
+    transition: color 0.5s;
 `
 
 function UserField(props: { user: User}) {
     return (
-        <UserFieldComponent>
-            <ProfileImage imageSrc={props.user.avatarURL} />
-
-            <p className='user-name'>
-                <a className='user-link' href={`${process.env.REACT_APP_PUBLIC_URL}/user/${props.user.name}`}>
-                    @{props.user.name}
-                </a>
-            </p>
-        </UserFieldComponent>
+        <UserFieldContainer>
+            <ProfileImage imageSrc={props.user.avatarURL} size={35} />
+            <UsernameLink href={`${process.env.REACT_APP_PUBLIC_URL}/user/${props.user.name}`}>
+                @{props.user.name}
+            </UsernameLink>
+        </UserFieldContainer>
     )
 }
 

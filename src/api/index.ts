@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from "axios";
-import { auth } from '../firebase';
+import { auth } from '../constants/firebase';
 
 class APIService {
     private instance: AxiosInstance;
@@ -41,5 +41,5 @@ class APIService {
     }
 }
 
-// export default new APIService("http://localhost:4000");
-export default new APIService("http://10.0.0.74:4000");
+export default new APIService("http://localhost:4000");
+// export default new APIService("http://10.0.0.74:4000");

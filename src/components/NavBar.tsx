@@ -5,14 +5,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ProfileImage } from "./ProfileImage";
 import styled from 'styled-components'
+import theme from '../constants/theme';
+import { ThemeProviderProps } from "react-bootstrap";
+import { SignupBox } from "./modals/SignupBox";
 
-const NavBarComponent = styled.nav`
-    background-color: lighten($background-color, 20%);
+const NavBarContainer = styled.nav`
+    background-color: ${theme.colors.backgroundColorLight20};
     position: fixed;
     top: 0;
     left: min(25vw, 250px);
     width: calc(100vw - min(25vw, 250px));
-    height: 50px;
+    height: ${theme.spacing.navbarHeight};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,76 +26,81 @@ const NavBarComponent = styled.nav`
         left: 0;
         width: 100vw;
     }
+`
 
-    .signed-in {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        * {
-            margin-inline: 10px;
-        }
-        p {
-            color: $primary-text-color;
-            margin: 0;
-        }
-        img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-        }
+const SignedInDetails = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    * {
+        margin-inline: 10px;
     }
+`
 
-    button {
-        background-color: $primary-color;
-        color: $primary-text-color;
-        border-radius: 5px;
-        border: none;
-        padding-inline: 10px;
-        font-size: 1.2rem;
-        transition: 0.4s;
-        
-        h1 {
-            margin: 0;
-            font-size: 1.4rem;
-        }
-    
-        &:hover {
-            background-color: lighten($primary-color, 10%);
-            font-size: 1.3rem;
-        }
+const NavbarText = styled.p`
+    color: ${theme.colors.primaryTextColor};
+    margin: 0;
+`
+
+const NavbarButton = styled.button<{ primary?: boolean}>`
+    background-color: ${props => props.primary ? theme.colors.primaryColor : "white"};
+    color: ${props => props.primary ? theme.colors.primaryTextColor : theme.colors.primaryColor};
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+    font-size: 1rem;
+    transition: 0.4s;
+    margin-inline: 6px;
+
+    &:hover {
+        background-color: ${props => props.primary ? theme.colors.primaryColorLight10 : "lightgray"};
+        font-size: 1.05rem;
     }
 `
 
 function NavBar(props: {onSearch: (searchTerm: string) => void}) {
     const [showMakePost, setShowMakePost] = React.useState(false);
     const [showLoginBox, setShowLoginBox] = React.useState(false);
+    const [showSignupBox, setShowSignupBox] = React.useState(false);
     const user = useSelector((state: any) => state.users.currentUser);
 
     return (
-        <NavBarComponent>
+        <NavBarContainer>
             <SearchBar onSearch={(term: string) => {props.onSearch(term)}}/>
 
             {
                 user !== null ? 
-                    (<div className='signed-in'>
-                        <ProfileImage imageSrc={user?.avatarURL}/>
-                        <p>
+                    (<SignedInDetails>
+                        <ProfileImage imageSrc={user?.avatarURL} size={35}/>
+                        <NavbarText>
                             @{user?.name}
-                        </p>
-                        <button onClick={() => {setShowMakePost(true)}}>
+                        </NavbarText>
+                        <NavbarButton 
+                            onClick={() => {setShowMakePost(true)}}
+                            primary
+                        >
                             + Post
-                        </button>
-                    </div>) :
-                    (<>
-                        <button onClick={() => {setShowLoginBox(true)}}>
+                        </NavbarButton>
+                    </SignedInDetails>) :
+                    (<div> 
+                        <NavbarButton 
+                            onClick={() => {setShowLoginBox(true)}}
+                        >
                             Login
-                        </button>
-                    </>)
+                        </NavbarButton>
+                        <NavbarButton 
+                            onClick={() => {setShowSignupBox(true)}}
+                            primary
+                        >
+                            Sign Up
+                        </NavbarButton>
+                    </div>)
             }
             
+            <SignupBox show={showSignupBox} onClose={() => {setShowSignupBox(false)}}/>
             <LoginBox show={showLoginBox} onClose={() => {setShowLoginBox(false)}} />
             <MakePost show={showMakePost} onClose={() => {setShowMakePost(false)}} />
-        </NavBarComponent>
+        </NavBarContainer>
     );
 }
 
