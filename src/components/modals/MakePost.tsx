@@ -34,7 +34,7 @@ function MakePost(props: {show: boolean, onClose: () => void}) {
                 </Modal.Header>
                 <Modal.Body>
                     <TextArea 
-                        placeholder="Write your hearts desire"
+                        placeholder="Write your heart's desire"
                         value={body}
                         onChange={(e) => {setBody(e.target.value)}}
                     />

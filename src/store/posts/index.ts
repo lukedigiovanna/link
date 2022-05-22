@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { actionTypes } from "react-redux-firebase";
 import { Post } from "../../types/post.type";
 import { ReactionCountUpdate } from "../../types/reactions.type";
 
@@ -26,12 +27,25 @@ const slice = createSlice({
         addReaction: (state, action: PayloadAction<ReactionCountUpdate>) => {
             const post = state.posts.find(p => p.id === action.payload.postId);
             if (post) {
-                if (!post.reactionCounts[action.payload.reaction]) {
-                    post.reactionCounts[action.payload.reaction] = 0;    
+                const reactionCounts = {...post.reactionCounts};
+                if (!reactionCounts[action.payload.reaction]) {
+                    reactionCounts[action.payload.reaction] = 1;
                 }
                 else {
-                    post.reactionCounts[action.payload.reaction]++;
+                    reactionCounts[action.payload.reaction]++;
                 }
+                // now reconstruct the post
+                const modifiedPost = {
+                    ...post,
+                    reactionCounts
+                }
+                // now insert the modified post into the state posts
+                const index = state.posts.findIndex(p => p.id === action.payload.postId);
+                state.posts = [
+                    ...state.posts.slice(0, index),
+                    modifiedPost,
+                    ...state.posts.slice(index + 1)
+                ];
             }
         }
     }

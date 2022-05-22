@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import api from '../../api';
 import endpoints from '../../api/endpoints';
@@ -17,7 +17,26 @@ function SignupBox(props: {show: boolean, onClose: () => void}) {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+    useEffect(() => {
+        setErrorMessage("");
+    }, [])
+
+    const validateUsername = (username: string) => {
+        const acceptableCharacters = /^[a-zA-Z0-9_]*$/;
+        if (username.length < 3) {
+            return "Username must be at least 3 characters";
+        }
+        else if (username.length > 15) {
+            return "Username must be less than 15 characters";
+        }
+        else if (!acceptableCharacters.test(username)) {
+            return "Username must only contain letters, numbers, and underscores";
+        }
+        return "";
+    }
+
     const submit = () => {
+        const userValidation = validateUsername(username);
         // check that the email/password have values put in
         if (email.length === 0 || username.length === 0 || firstName.length === 0 || lastName.length === 0 || password.length === 0) {
             setErrorMessage("Please enter all fields.")
@@ -25,20 +44,10 @@ function SignupBox(props: {show: boolean, onClose: () => void}) {
         else if (password !== passwordConfirm) {
             setErrorMessage("Passwords do not match.")
         }
+        else if (userValidation !== "") {
+            setErrorMessage(userValidation);
+        }
         else {
-            // signInWithEmailAndPassword(auth, email, password).then(() => {
-            //     props.onClose();
-            // }).catch(error => {
-            //     if (error.message.includes("password")) {
-            //         setErrorMessage("Login Failure: Incorrect password")
-            //     }
-            //     else if (error.message.includes("user")) {
-            //         setErrorMessage("Login Failure: User not found")
-            //     }
-            //     else if (error.message.includes("email")) {
-            //         setErrorMessage("Login Failure: Email poorly formatted")
-            //     }
-            // });
             api.post(endpoints.users(), {
                 name: username,
                 email: email,
@@ -49,7 +58,12 @@ function SignupBox(props: {show: boolean, onClose: () => void}) {
             }).then(() => {
                 signInWithEmailAndPassword(auth, email, password).then(() => {
                         props.onClose();
-                })
+                }).catch(error => {
+                    console.log(error);
+                    setErrorMessage("Error signing in. Please try again.");
+                });
+            }).catch(err => {
+                setErrorMessage(err.message);
             });
         }
     }

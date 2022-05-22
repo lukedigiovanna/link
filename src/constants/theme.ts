@@ -17,7 +17,9 @@ const theme = {
         primaryTextColor: "#EEEEEE",
         secondaryTextColor: "#BBBBBB",
         linkHighlightColor: "#E187FF",
-        errorColor: "C10303"
+        errorColor: "C10303",
+
+        alreadyReacted: "#006bd6",
     },
 
     fonts: {

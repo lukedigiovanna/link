@@ -13,7 +13,7 @@ import { auth, onAuthStateChanged } from "../constants/firebase";
 import api from '../api';
 import endpoints from '../api/endpoints'
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../store/users";
+import { setCurrentUser, setCurrentReactions } from "../store/users";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -27,9 +27,14 @@ export default function App() {
                 api.get(endpoints.user(user.uid)).then(response => {
                     dispatch(setCurrentUser(response.data));
                 });
+                api.get(endpoints.reactions()).then(response => {
+                    console.log(response.data);
+                    dispatch(setCurrentReactions(response.data));
+                });
             }
             else {
                 dispatch(setCurrentUser(null));
+                dispatch(setCurrentReactions([]))
             }
         });
     })

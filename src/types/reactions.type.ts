@@ -22,6 +22,7 @@ export enum ReactionType {
 export interface Reaction {
     string: ReactionType;
     postId: number;
+    id: number;
 }
 
 export interface ReactionCountUpdate {
