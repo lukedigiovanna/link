@@ -7,16 +7,16 @@ import { useDispatch } from 'react-redux';
 import { setPosts } from '../store/posts';
 import { HorizontalSpacer, VerticalSpacer } from '../utils/styles';
 import theme from '../constants/theme';
+import { fetchAllPosts } from '../store/posts';
+import store from '../store';
 
 export default function MainPage(props: {searchTerm?: string}) {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<typeof store.dispatch>();
 
     // get all posts
     useEffect(() => {
         // fetch posts from api
-        api.get(endpoints.posts()).then((response) => {
-            dispatch(setPosts(response.data));
-        });
+        dispatch(fetchAllPosts())
     });
 
     return (

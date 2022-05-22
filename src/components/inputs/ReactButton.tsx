@@ -66,7 +66,7 @@ function ReactButton(props: { reaction: string, count: number, postId: number })
                             dispatch(addUserReaction(res.data));
                         }
                     }).catch(err => {
-                        alert(err.message);
+                        alert("An error has occurred\n" + err.message);
                     });
 
                     // give this button precedence over the post it may be on

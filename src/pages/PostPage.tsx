@@ -8,18 +8,17 @@ import { setPosts } from '../store/posts';
 import { useDispatch } from 'react-redux';
 import { VerticalSpacer } from "../utils/styles";
 import theme from "../constants/theme";
+import store from '../store';
+import { fetchPostReplies } from '../store/posts';
 
 function PostPage() {
     const { id } = useParams();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<typeof store.dispatch>();
 
     // look for the first post in the store as the main post
     // then all others are direct replies to that post.
     useEffect(() => {
-        // clear posts before loading in the replies
-        api.get(endpoints.posts(Number(id))).then((response) => {
-            dispatch(setPosts(response.data.reverse()));
-        });
+        dispatch(fetchPostReplies(Number(id)));
     });
 
     return (

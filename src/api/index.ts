@@ -41,6 +41,6 @@ class APIService {
     }
 }
 
-// export default new APIService("http://localhost:4000");
+export default new APIService("http://localhost:4000");
 // export default new APIService("http://10.0.0.74:4000");
-export default new APIService("http://10.0.0.10:4000");
+// export default new APIService("http://10.0.0.10:4000");

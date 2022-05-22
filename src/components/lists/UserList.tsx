@@ -9,6 +9,7 @@ import { setUsers } from '../../store/users';
 import styled from "styled-components";
 import theme from "../../constants/theme";
 import store from "../../store";
+import { StatusText } from "../../utils/styles";
 
 const UserListContainer = styled.div`
      @media screen and (max-width: 550px) {
@@ -58,10 +59,6 @@ function UserList() {
     // const dispatch = useDispatch();
 
     useEffect(() => {
-        // api.get(endpoints.users()).then((response) => {
-        //     dispatch(setUsers(response.data));
-        // });
-        
         dispatch(fetchUsersList());
     }, []);
 
@@ -71,12 +68,17 @@ function UserList() {
                 Link
             </TitleLink>
             {
-                users.users.map((user: User) => {
+                users.users.length > 0 && users.loading === 'succeeded' && users.users.map((user: User) => {
                     return (
                         <UserField key={user.name} user={user} />
                     )
                 })
-                
+            }
+            {
+                users.loading === 'failed' && <StatusText>Failed to load users</StatusText>
+            }
+            {
+                users.loading === 'pending' && <StatusText>Loading users...</StatusText>
             }
         </UserListContainer>
     )

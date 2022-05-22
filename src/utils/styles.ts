@@ -28,4 +28,9 @@ const HorizontalSpacer= styled.div<{width: string}>`
     width: ${props => props.width };
 `
 
-export {ml_10, set_font_primary, in_main_frame, VerticalSpacer, HorizontalSpacer };
+const StatusText = styled.p`
+    color: ${theme.colors.primaryTextColor};
+    font-family: ${theme.fonts.primary};
+`
+
+export {ml_10, set_font_primary, in_main_frame, VerticalSpacer, HorizontalSpacer, StatusText };
