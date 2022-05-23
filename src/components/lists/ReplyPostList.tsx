@@ -4,6 +4,7 @@ import { PostBlock } from '../blocks/PostBlock';
 import { in_main_frame } from '../../utils/styles';
 import styled from 'styled-components';
 import { StatusText } from '../../utils/styles';
+import { ReplyBox } from '../inputs/ReplyBox';
 
 const ReplyPostListContainer = styled.div`
     ${in_main_frame}
@@ -20,7 +21,13 @@ function ReplyPostList() {
     return (
         <ReplyPostListContainer>
             { 
-                posts.posts.length > 0 && posts.loading === 'succeeded' && <PostBlock post={posts.posts[0]} />
+                posts.posts.length > 0 && posts.loading === 'succeeded' && 
+                    (
+                    <>
+                        <PostBlock post={posts.posts[0]} />
+                        <ReplyBox />
+                    </>
+                    )
             }
 
             <ReplyListContainer>

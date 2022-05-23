@@ -38,7 +38,7 @@ export const fetchPostReplies = createAsyncThunk(
     async (id: number) => {
         const posts = await api.get(endpoints.posts(id));
         console.log(posts);
-        return posts.data;
+        return posts.data.reverse();
     }
 )
 
