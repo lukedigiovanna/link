@@ -11,19 +11,6 @@ import { auth, signInWithEmailAndPassword, signOut } from './constants/firebase'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { Provider } from 'react-redux';
 
-async function main() {
-  try {
-    // signOut(auth);
-    // await signInWithEmailAndPassword(auth, "admin2@gmail.com", "admin123");
-    // console.log("Signed in");
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
-
-main();
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

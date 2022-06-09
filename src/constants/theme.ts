@@ -9,10 +9,10 @@ const theme = {
         backgroundColorLight10: "#1F1F1F",
         backgroundColorLight20: "#2D2D2D",
 
-        // postColor: "#150050",
-        // postColorLight: "#250060",
-        postColor: "#000000",
-        postColorLight: "#111111",
+        postColor: "#150050",
+        postColorLight: "#250060",
+        // postColor: "#000000",
+        // postColorLight: "#111111",
 
         primaryTextColor: "#EEEEEE",
         secondaryTextColor: "#BBBBBB",

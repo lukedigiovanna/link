@@ -33,4 +33,10 @@ const StatusText = styled.p`
     font-family: ${theme.fonts.primary};
 `
 
-export {ml_10, set_font_primary, in_main_frame, VerticalSpacer, HorizontalSpacer, StatusText };
+const center_main = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export {ml_10, set_font_primary, in_main_frame, center_main, VerticalSpacer, HorizontalSpacer, StatusText };

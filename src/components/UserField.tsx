@@ -25,10 +25,18 @@ const UsernameLink = styled.a`
     transition: color 0.5s;
 `
 
+const HideOnMobile = styled.div`
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
+`
+
 function UserField(props: { user: User}) {
     return (
         <UserFieldContainer>
-            <ProfileImage imageSrc={props.user.avatarURL} size={35} />
+            <HideOnMobile>
+                <ProfileImage imageSrc={props.user.avatarURL} size={35} />
+            </HideOnMobile>
             <UsernameLink href={`${process.env.REACT_APP_PUBLIC_URL}/user/${props.user.name}`}>
                 @{props.user.name}
             </UsernameLink>

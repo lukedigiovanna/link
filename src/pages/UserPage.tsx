@@ -9,8 +9,14 @@ import { UserList } from "../components/lists/UserList";
 import { ProfileBlock } from "../components/blocks/ProfileBlock";
 import { useSelector } from "react-redux";
 import { User, UserLoading } from "../types/user.type";
-import { VerticalSpacer } from "../utils/styles";
+import { in_main_frame, center_main, VerticalSpacer } from "../utils/styles";
 import theme from "../constants/theme";
+import styled from 'styled-components';
+
+const CenterMain = styled.div`
+    ${in_main_frame}
+    ${center_main}
+`
 
 export default function UserPage() {
     const { username } = useParams(); 
@@ -32,8 +38,6 @@ export default function UserPage() {
                 setUser(user);
             }
         }, []);
-
-        console.log("foo");
     });
 
 
@@ -42,7 +46,9 @@ export default function UserPage() {
         <>
             <UserList />   
             <VerticalSpacer height={theme.spacing.navbarHeight} />
-            <ProfileBlock user={user} /> 
+            <CenterMain>
+                <ProfileBlock user={user} /> 
+            </CenterMain>
             <PostList />
         </>
     )

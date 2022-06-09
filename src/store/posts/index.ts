@@ -24,6 +24,14 @@ export const fetchAllPosts = createAsyncThunk(
     }
 )
 
+export const fetchNextPosts = createAsyncThunk(
+    "posts/fetchNextPosts",
+    async (offset: number) => {
+        // const posts = await api.get()
+        console.log(offset);
+    }
+)
+
 export const fetchUserPosts = createAsyncThunk(
     "posts/fetchUserPosts",
     async (name: string) => {

@@ -1,4 +1,3 @@
-import searchIcon from '../../assets/images/search.png';
 import styled from 'styled-components';
 import theme from '../../constants/theme';
 
@@ -50,7 +49,7 @@ const SearchField = styled.input`
 function SearchBar(props: { onSearch: (searchTerm: string) => void }) {
     return (
         <SearchBarComponent>
-            <SearchIcon src={searchIcon} />
+            <SearchIcon src={require("../../assets/images/search.png")} />
             <SearchField
                 placeholder="Search"
                 onChange={(e) => {props.onSearch(e.currentTarget.value)}}

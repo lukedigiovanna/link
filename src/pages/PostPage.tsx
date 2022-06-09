@@ -1,10 +1,7 @@
 import { useParams } from "react-router-dom";
 import { ReplyPostList } from "../components/lists/ReplyPostList";
 import { UserList } from '../components/lists/UserList';
-import api from '../api';
-import endpoints from "../api/endpoints";
 import { useEffect } from "react";
-import { setPosts } from '../store/posts';
 import { useDispatch } from 'react-redux';
 import { VerticalSpacer } from "../utils/styles";
 import theme from "../constants/theme";
@@ -25,7 +22,7 @@ function PostPage() {
         <>
             <UserList />
             <VerticalSpacer height={theme.spacing.navbarHeight} />
-            <ReplyPostList />
+            <ReplyPostList postId={Number(id)}/>
         </>
     )
 }

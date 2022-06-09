@@ -7,13 +7,18 @@ import styled from 'styled-components'
 import theme from '../../constants/theme'
 
 const PostBlockContainer = styled.div`
+    border-radius: 4px;
+    margin: 10px;
+    padding: 3px;
+
     background-color: ${theme.colors.postColor};
     padding-block: 15px;
     padding-right: 15px;
     display: flex;
     flex-direction: row;
     transition: background-color 0.3s;
-    max-width: 800px;
+    max-width: 700px;
+    width: 95%;
     cursor: pointer;
 
     &:hover {

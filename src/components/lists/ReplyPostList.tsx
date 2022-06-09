@@ -1,13 +1,15 @@
 import { useSelector } from 'react-redux';
 import { Post } from '../../types/post.type';
 import { PostBlock } from '../blocks/PostBlock';
-import { in_main_frame } from '../../utils/styles';
+import { in_main_frame, center_main } from '../../utils/styles';
 import styled from 'styled-components';
 import { StatusText } from '../../utils/styles';
 import { ReplyBox } from '../inputs/ReplyBox';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const ReplyPostListContainer = styled.div`
     ${in_main_frame}
+    ${center_main}
 `;
 
 const ReplyListContainer = styled.div`
@@ -15,7 +17,7 @@ const ReplyListContainer = styled.div`
 `
 
 
-function ReplyPostList() {
+function ReplyPostList(props: {postId: number}) {
     const posts = useSelector((state: any) => state.posts);
 
     return (
@@ -25,7 +27,7 @@ function ReplyPostList() {
                     (
                     <>
                         <PostBlock post={posts.posts[0]} />
-                        <ReplyBox />
+                        <ReplyBox postId={props.postId}/>
                     </>
                     )
             }

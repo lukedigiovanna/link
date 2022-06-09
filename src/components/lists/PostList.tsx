@@ -3,20 +3,14 @@ import { Post } from '../../types/post.type';
 import { PostBlock } from '../blocks/PostBlock';
 import { fuzzySearch } from '../../utils/search';
 import styled from 'styled-components';
-import { in_main_frame } from '../../utils/styles';
+import { in_main_frame, center_main } from '../../utils/styles';
 import theme from '../../constants/theme';
 import { StatusText } from '../../utils/styles';
 
 const PostListContainer = styled.div`
     ${in_main_frame}
+    ${center_main}
 `;
-
-const HorizontalBar = styled.hr`
-    margin: 0;
-    background-color: gray;
-    max-width: 800px;
-    z-index: -1;
-`
 
 
 function PostList(props: { searchTerm?: string}) {
@@ -30,8 +24,7 @@ function PostList(props: { searchTerm?: string}) {
                     .map((post: Post) => {
                         return (
                             <>
-                                <PostBlock key={post.id} post={post} /> 
-                                <HorizontalBar/>
+                                <PostBlock key={post.id} post={post} />
                             </>
                         )
                     }) 

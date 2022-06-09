@@ -7,11 +7,15 @@ import { in_main_frame } from "../../utils/styles";
 
 const ProfileBlockContainer = styled.div`
     ${in_main_frame}
+    border-radius: 3px;
+    margin: 10px;
+    width: 100%;
+
     display: flex;
     flex-direction: row;
     background-color: ${theme.colors.secondaryColor};
     padding: 10px;
-    max-width: 800px;
+    max-width: 700px;
 `;
 
 const ProfileDetailsContainer = styled.div`
